@@ -16,9 +16,22 @@ if os.path.isfile(BASE_DIR / ".env"):
                     value = value[1:-1].replace("\\'", "'")
                 os.environ.setdefault(key, value)
 
-SECRET_KEY = "replace-this-with-a-secure-key"
-DEBUG = True
-ALLOWED_HOSTS = []
+SECRET_KEY = os.environ.get("SECRET_KEY", "replace-this-with-a-secure-key")
+DEBUG = os.environ.get("DEBUG", "true").lower() in ("true", "1", "yes")
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "codexware.pythonanywhere.com",
+]
+if os.environ.get("ALLOWED_HOSTS_EXTRA"):
+    ALLOWED_HOSTS += [h.strip() for h in os.environ["ALLOWED_HOSTS_EXTRA"].split(",") if h.strip()]
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:8000",
+    "http://localhost:8000",
+    "https://codexware.pythonanywhere.com",
+]
+if os.environ.get("CSRF_TRUSTED_ORIGINS_EXTRA"):
+    CSRF_TRUSTED_ORIGINS += [o.strip() for o in os.environ["CSRF_TRUSTED_ORIGINS_EXTRA"].split(",") if o.strip()]
 
 INSTALLED_APPS = [
     "unfold",
