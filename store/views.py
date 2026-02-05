@@ -12,8 +12,10 @@ from .utils import (
     update_cart_item,
     remove_cart_item,
     clear_cart,
+    get_cart,
     get_cart_items,
     get_site_setting,
+    save_cart,
 )
 from . import paynow
 
@@ -285,6 +287,7 @@ def checkout(request):
                     unit_price=unit_price,
                     line_total=line_total,
                 )
+            save_cart(request, get_cart(request))
             return redirect("payment_status", reference=order.reference)
     else:
         form = CheckoutForm()
