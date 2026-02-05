@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block title %}Checkout · Party Fantasy ZW{% endblock %}
+{% block content %}
+<section class="py-10 sm:py-14">
+    <h1 class="text-2xl sm:text-3xl font-bold text-neutral-900 tracking-tight mb-2">Checkout</h1>
+    <p class="text-neutral-600 mb-8">Share your party details and confirm your order.</p>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div class="lg:col-span-2">
+            <form method="post" class="space-y-8">
+                {% csrf_token %}
+                <div>
+                    <h2 class="text-lg font-semibold text-neutral-900 mb-4">Party details</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="{{ form.theme.id_for_label }}" class="block text-sm font-medium text-neutral-700 mb-1">Theme</label>
+                            {{ form.theme }}
+                        </div>
+                        <div>
+                            <label for="{{ form.child_name.id_for_label }}" class="block text-sm font-medium text-neutral-700 mb-1">Child's name</label>
+                            {{ form.child_name }}
+                        </div>
+                        <div>
+                            <label for="{{ form.age.id_for_label }}" class="block text-sm font-medium text-neutral-700 mb-1">Age</label>
+                            {{ form.age }}
+                        </div>
+                        <div>
+                            <label for="{{ form.collection_date.id_for_label }}" class="block text-sm font-medium text-neutral-700 mb-1">Collection date</label>
+                            {{ form.collection_date }}
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="{{ form.toy_preference.id_for_label }}" class="block text-sm font-medium text-neutral-700 mb-1">Toys preference</label>
+                            {{ form.toy_preference }}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-lg font-semibold text-neutral-900 mb-4">Delivery</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="{{ form.delivery_method.id_for_label }}" class="block text-sm font-medium text-neutral-700 mb-1">Delivery method</label>
+                            {{ form.delivery_method }}
+                        </div>
+                        <div id="delivery-address-wrap" class="hidden">
+                            <label for="{{ form.delivery_address.id_for_label }}" class="block text-sm font-medium text-neutral-700 mb-1">Delivery address (Zimbabwe)</label>
+                            {{ form.delivery_address }}
+                            {% if form.delivery_address.errors %}
+                            <p class="text-sm text-red-600 mt-1">{{ form.delivery_address.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-lg font-semibold text-neutral-900 mb-4">Contact</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="sm:col-span-2">
+                            <label for="{{ form.full_name.id_for_label }}" class="block text-sm font-medium text-neutral-700 mb-1">Full name</label>
+                            {{ form.full_name }}
+                        </div>
+                        <div>
+                            <label for="{{ form.phone.id_for_label }}" class="block text-sm font-medium text-neutral-700 mb-1">Phone</label>
+                            {{ form.phone }}
+                        </div>
+                        <div>
+                            <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium text-neutral-700 mb-1">Email</label>
+                            {{ form.email }}
+                        </div>
+                    </div>
+                </div>
+                {% if form.non_field_errors %}
+                <div class="p-4 rounded-2xl bg-red-50 border border-red-100 text-sm text-red-800">
+                    {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% if not paynow_configured %}
+                <div class="p-4 rounded-2xl bg-neutral-100 border border-neutral-200 text-sm text-neutral-700">
+                    Online payments are not fully configured yet. Your order will still be created, but you may need to arrange payment directly with Party Fantasy ZW.
+                </div>
+                {% endif %}
+                <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 rounded-2xl font-medium text-white bg-rose-500 hover:bg-rose-600 border border-rose-500 transition-colors">Place order and pay with EcoCash</button>
+            </form>
+        </div>
+        <aside id="checkout-summary" class="lg:col-span-1" data-subtotal="{{ subtotal|floatformat:2 }}" data-delivery-fee="{{ delivery_fee_value|floatformat:2 }}">
+            <div class="bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.06)] sticky top-24">
+                {% include "includes/zim_stripe.html" %}
+                <div class="p-6">
+                <h2 class="text-lg font-bold text-neutral-900 mb-4">Order summary</h2>
+                <div class="space-y-3 text-sm">
+                    <div class="flex justify-between text-neutral-600">
+                        <span>Subtotal</span>
+                        <span id="checkout-subtotal">${{ subtotal }}</span>
+                    </div>
+                    <div class="flex justify-between text-neutral-600">
+                        <span>Delivery fee</span>
+                        <span id="checkout-delivery-fee">$0.00</span>
+                    </div>
+                    <div class="flex justify-between font-semibold text-neutral-900 pt-3 border-t border-neutral-200">
+                        <span>Total</span>
+                        <span id="checkout-total">${{ subtotal }}</span>
+                    </div>
+                </div>
+                <p class="text-xs text-neutral-500 mt-4">Delivery is only available within Zimbabwe. All prices are in USD.</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+</section>
+<script>
+function initCheckoutSummary() {
+    var methodSelect = document.getElementById('id_delivery_method');
+    var addressWrap = document.getElementById('delivery-address-wrap');
+    var summary = document.getElementById('checkout-summary');
+    var feeEl = document.getElementById('checkout-delivery-fee');
+    var totalEl = document.getElementById('checkout-total');
+    if (!methodSelect || !summary || !feeEl || !totalEl) return;
+    var subtotalStr = summary.getAttribute('data-subtotal');
+    var feeStr = summary.getAttribute('data-delivery-fee');
+    var subtotal = parseFloat(subtotalStr) || 0;
+    var deliveryFee = parseFloat(feeStr) || 0;
+    function format(n) { return '$' + Number(n).toFixed(2); }
+    function updateSummary() {
+        var isDelivery = (methodSelect.value || '').toLowerCase() === 'delivery';
+        if (addressWrap) addressWrap.classList.toggle('hidden', !isDelivery);
+        var fee = isDelivery ? deliveryFee : 0;
+        var total = subtotal + fee;
+        feeEl.textContent = format(fee);
+        totalEl.textContent = format(total);
+    }
+    methodSelect.addEventListener('change', updateSummary);
+    updateSummary();
+}
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCheckoutSummary);
+} else {
+    initCheckoutSummary();
+}
+</script>
+{% endblock %}

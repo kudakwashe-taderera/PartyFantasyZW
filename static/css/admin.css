@@ -1,0 +1,53 @@
+body {
+    font-family: "Outfit", system-ui, sans-serif;
+}
+
+#header {
+    background: linear-gradient(135deg, #ff4da6, #ff7abf);
+    color: #ffffff;
+}
+
+#header a:link,
+#header a:visited {
+    color: #ffffff;
+}
+
+#branding h1,
+#branding h1 a {
+    font-family: "Fraunces", serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.module h2,
+.module caption,
+#content-main .module h2,
+#content-main .module caption,
+div.main .module h2,
+div.main .module caption,
+[class*="module"] h2,
+[class*="module"] caption,
+.app-store .module h2,
+.app-store .module caption {
+    background-color: #c2185b !important;
+    color: #ffffff !important;
+}
+
+#nav-sidebar .module caption,
+#nav-sidebar .module h2,
+.toggle-nav-sidebar ~ #nav-sidebar .module caption,
+.toggle-nav-sidebar ~ #nav-sidebar .module h2 {
+    background-color: #c2185b !important;
+    color: #ffffff !important;
+}
+
+.button.default,
+input[type=submit].default {
+    background: linear-gradient(135deg, #ff4da6, #ff7abf);
+    border-color: transparent;
+}
+
+a {
+    color: #ff4da6;
+}
+

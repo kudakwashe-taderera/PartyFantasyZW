@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Gallery · Party Fantasy ZW{% endblock %}
+{% block content %}
+<section class="py-10 sm:py-14">
+    <div class="mb-8">
+        <h1 class="font-display text-2xl sm:text-3xl font-bold text-neutral-900 tracking-tight mb-1">Gallery</h1>
+        <p class="text-neutral-600 text-sm">Photos and videos from our parties and setups.</p>
+    </div>
+    {% if items %}
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+        {% for item in items %}
+        {% if item.image or item.video %}
+        <div class="rounded-xl overflow-hidden border border-neutral-200 bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06)] hover:shadow-md transition-shadow duration-200">
+            {% if item.image %}
+            <a href="{{ item.image.url }}" target="_blank" rel="noopener noreferrer" class="block aspect-square bg-neutral-100">
+                <img src="{{ item.image.url }}" alt="{{ item.caption|default:'' }}" class="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-200">
+            </a>
+            {% elif item.video %}
+            <div class="aspect-square bg-neutral-900 relative">
+                <video class="w-full h-full object-cover" muted loop playsinline preload="metadata" src="{{ item.video.url }}"></video>
+                <a href="{{ item.video.url }}" target="_blank" rel="noopener noreferrer" class="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors">
+                    <span class="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center text-neutral-800 shadow-lg" aria-label="Play video">
+                        <svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </span>
+                </a>
+            </div>
+            {% endif %}
+            {% if item.caption %}
+            <p class="p-2 sm:p-2.5 text-xs text-neutral-600 line-clamp-2">{{ item.caption }}</p>
+            {% endif %}
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="rounded-2xl border border-neutral-200 bg-neutral-50/50 p-12 text-center">
+        <p class="text-neutral-600 font-medium">No photos or videos yet</p>
+        <p class="text-sm text-neutral-500 mt-1">Check back soon for party highlights.</p>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

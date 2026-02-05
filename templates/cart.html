@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Cart · Party Fantasy ZW{% endblock %}
+{% block content %}
+<section class="py-10 sm:py-14">
+    <div class="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+            <h1 class="text-2xl sm:text-3xl font-bold text-neutral-900 tracking-tight mb-2">Your cart</h1>
+            <p class="text-neutral-600">Review your party box items before checkout.</p>
+        </div>
+        <a href="{% url 'product_list' %}" class="text-sm font-medium text-rose-600 hover:text-rose-700 transition-colors sm:shrink-0">← Add more items</a>
+    </div>
+    {% if items %}
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div class="lg:col-span-2 space-y-4">
+            {% for item in items %}
+            <div class="bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
+                {% include "includes/zim_stripe.html" %}
+                <div class="p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div>
+                        <div class="font-semibold text-neutral-900">{{ item.product.name }}</div>
+                        <div class="text-sm text-neutral-600 mt-1">${{ item.product.price }} each · ${{ item.line_total }} total</div>
+                    </div>
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <div class="flex items-center border border-neutral-200 rounded-2xl overflow-hidden bg-white">
+                            {% if item.qty > 1 %}
+                            <form method="post" class="inline">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ item.product.id }}">
+                                <input type="hidden" name="action" value="update">
+                                <input type="hidden" name="qty" value="{{ item.qty|add:-1 }}">
+                                <button type="submit" class="flex items-center justify-center w-10 h-10 text-neutral-600 hover:bg-rose-50 hover:text-rose-600 transition-colors" aria-label="Remove one">−</button>
+                            </form>
+                            {% endif %}
+                            <span class="w-12 py-2 text-center text-sm font-medium text-neutral-900">{{ item.qty }}</span>
+                            <form method="post" class="inline">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ item.product.id }}">
+                                <input type="hidden" name="action" value="update">
+                                <input type="hidden" name="qty" value="{{ item.qty|add:1 }}">
+                                <button type="submit" class="flex items-center justify-center w-10 h-10 text-neutral-600 hover:bg-rose-50 hover:text-rose-600 transition-colors" aria-label="Add one">+</button>
+                            </form>
+                        </div>
+                        <form method="post" class="inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="product_id" value="{{ item.product.id }}">
+                            <button type="submit" name="action" value="remove" class="px-4 py-2 rounded-2xl text-sm font-medium text-neutral-600 hover:text-rose-600 hover:bg-rose-50 transition-colors">Remove</button>
+                        </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <aside class="lg:col-span-1">
+            <div class="bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.06)] sticky top-24">
+                {% include "includes/zim_stripe.html" %}
+                <div class="p-6">
+                <h2 class="text-lg font-bold text-neutral-900 mb-4">Summary</h2>
+                <div class="space-y-3 text-sm">
+                    <div class="flex justify-between font-semibold text-neutral-900 pt-1">
+                        <span>Subtotal</span>
+                        <span>${{ subtotal }}</span>
+                    </div>
+                </div>
+                <a href="{% url 'checkout' %}" class="mt-6 inline-flex items-center justify-center w-full px-6 py-3 rounded-2xl font-medium text-white bg-rose-500 hover:bg-rose-600 border border-rose-500 transition-colors">Checkout</a>
+                <a href="{% url 'product_list' %}" class="mt-3 inline-block text-center text-sm font-medium text-neutral-600 hover:text-rose-600 transition-colors w-full">Add more items</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    {% else %}
+    <div class="text-center py-16 px-6 rounded-2xl bg-neutral-50 border border-neutral-200">
+        <p class="text-neutral-600 mb-6">Your cart is empty.</p>
+        <a href="{% url 'product_list' %}" class="inline-flex items-center justify-center px-6 py-3 rounded-2xl font-medium text-white bg-rose-500 hover:bg-rose-600 border border-rose-500 transition-colors">Browse products</a>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

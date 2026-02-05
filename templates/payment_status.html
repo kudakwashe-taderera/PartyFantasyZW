@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Payment status · Party Fantasy ZW{% endblock %}
+{% block content %}
+<section class="py-10 sm:py-14 px-4">
+    <div class="max-w-md mx-auto">
+        <div class="flex items-center justify-center gap-3 mb-6">
+            <img src="{% static 'img/Ecocash-Logo.png' %}" alt="EcoCash" class="h-10 sm:h-12 w-auto object-contain">
+            <span class="text-sm font-medium text-neutral-500 uppercase tracking-wider">Payment status</span>
+        </div>
+        <div class="bg-white rounded-2xl border border-neutral-200 shadow-xl shadow-neutral-200/50 overflow-hidden">
+            <div class="h-1 flex">
+                <span class="w-full bg-[#009739]"></span>
+                <span class="w-full bg-[#FCD116]"></span>
+                <span class="w-full bg-[#DE3831]"></span>
+                <span class="w-full bg-[#000000]"></span>
+                <span class="w-full bg-[#DE3831]"></span>
+                <span class="w-full bg-[#FCD116]"></span>
+                <span class="w-full bg-[#009739]"></span>
+            </div>
+            <div class="p-6 sm:p-8">
+                <div class="flex items-center justify-between gap-4 mb-6">
+                    <div>
+                        <p class="text-xs font-medium text-neutral-500 uppercase tracking-wider">Reference</p>
+                        <p class="text-lg font-bold text-neutral-900 mt-0.5 font-mono">{{ order.reference }}</p>
+                    </div>
+                    <div class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-neutral-50 border border-neutral-100">
+                        <img src="{% static 'img/zim-flag.png' %}" alt="" class="h-5 w-6 object-cover rounded shrink-0" aria-hidden="true">
+                        <span class="text-xs font-medium text-neutral-600">ZW</span>
+                    </div>
+                </div>
+                <div class="space-y-0 border-y border-neutral-100">
+                    <div class="flex justify-between items-center py-4">
+                        <span class="text-sm text-neutral-500">Order total</span>
+                        <span class="font-semibold text-neutral-900">${{ order.total }}</span>
+                    </div>
+                    <div class="flex justify-between items-center py-4 border-t border-neutral-100">
+                        <span class="text-sm text-neutral-500">Status</span>
+                        <span class="px-3 py-1.5 rounded-full text-sm font-semibold {% if order.status == 'PAID' %}bg-green-100 text-green-800{% elif order.status == 'FAILED' %}bg-red-100 text-red-800{% else %}bg-neutral-100 text-neutral-700{% endif %}">{{ order.status }}</span>
+                    </div>
+                </div>
+                {% if not paynow_configured or not order.paynow_poll_url or order.status == "PENDING" and not order.paynow_redirect_url %}
+                <p class="text-sm text-neutral-600 mt-5 py-4 px-4 rounded-xl bg-neutral-50 border border-neutral-100">Payments may not be fully configured. If you paid another way, we will confirm with you directly. Need help? <a href="{% url 'contact' %}" class="font-medium text-rose-600 hover:text-rose-700">Contact us</a>.</p>
+                {% else %}
+                <p class="text-sm text-neutral-600 mt-5">Refreshed payment status from Zimbabwe. If you just paid, it may take a moment to update.</p>
+                <form method="post" class="mt-5">
+                    {% csrf_token %}
+                    <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl font-semibold text-white bg-rose-500 hover:bg-rose-600 border border-rose-500 transition-colors shadow-lg shadow-rose-500/25">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                        Check payment status
+                    </button>
+                </form>
+                {% endif %}
+                <a href="{% url 'product_list' %}" class="inline-block mt-6 text-sm font-medium text-neutral-500 hover:text-rose-600 transition-colors">Continue shopping</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Payment not completed · Party Fantasy ZW{% endblock %}
+{% block content %}
+<section class="py-10 sm:py-14 px-4">
+    <div class="max-w-md mx-auto">
+        <div class="flex items-center justify-center gap-3 mb-6">
+            <img src="{% static 'img/Ecocash-Logo.png' %}" alt="EcoCash" class="h-10 sm:h-12 w-auto object-contain opacity-90">
+            <span class="text-sm font-medium text-neutral-500 uppercase tracking-wider">Payment not completed</span>
+        </div>
+        <div class="bg-white rounded-2xl border border-neutral-200 shadow-xl shadow-neutral-200/50 overflow-hidden">
+            <div class="h-1 flex">
+                <span class="w-full bg-[#009739]"></span>
+                <span class="w-full bg-[#FCD116]"></span>
+                <span class="w-full bg-[#DE3831]"></span>
+                <span class="w-full bg-[#000000]"></span>
+                <span class="w-full bg-[#DE3831]"></span>
+                <span class="w-full bg-[#FCD116]"></span>
+                <span class="w-full bg-[#009739]"></span>
+            </div>
+            <div class="p-6 sm:p-8">
+                <div class="flex justify-end mb-4">
+                    <div class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-neutral-50 border border-neutral-100">
+                        <img src="{% static 'img/zim-flag.png' %}" alt="" class="h-5 w-6 object-cover rounded shrink-0" aria-hidden="true">
+                        <span class="text-xs font-medium text-neutral-600">ZW</span>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center text-center py-4">
+                    <div class="w-16 h-16 rounded-full bg-amber-50 border-2 border-amber-200 flex items-center justify-center mb-5">
+                        <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                    </div>
+                    <h1 class="text-xl font-bold text-neutral-900 mb-1">Payment not completed</h1>
+                    <p class="text-sm text-neutral-600">This payment was cancelled or could not be completed. No charges have been made.</p>
+                </div>
+                <p class="text-sm text-neutral-600 mb-6 leading-relaxed">You can place a new order or <a href="{% url 'contact' %}" class="font-medium text-rose-600 hover:text-rose-700 transition-colors">contact us</a> for assistance.</p>
+                <div class="flex justify-between items-center py-3 border-t border-neutral-100">
+                    <span class="text-sm text-neutral-500">Order reference</span>
+                    <span class="font-mono text-sm font-medium text-neutral-700">{{ order.reference }}</span>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 mt-6">
+                    <a href="{% url 'product_list' %}" class="flex-1 inline-flex items-center justify-center px-5 py-3.5 rounded-xl font-semibold text-white bg-rose-500 hover:bg-rose-600 border border-rose-500 transition-colors shadow-lg shadow-rose-500/25">Browse products</a>
+                    <a href="{% url 'contact' %}" class="flex-1 inline-flex items-center justify-center px-5 py-3.5 rounded-xl font-semibold border border-neutral-200 text-neutral-700 hover:bg-neutral-50 transition-colors">Contact us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
