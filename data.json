@@ -1,0 +1,2096 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-02-04T21:57:29.370Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "Site Settings",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Delivery fee\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-02-04T23:47:27.886Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "1",
+    "object_repr": "gallery/hero.mp4",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-02-05T00:42:34.817Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "4",
+    "object_repr": "Budget Pack 1",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\", \"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-02-05T00:43:13.896Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "5",
+    "object_repr": "Budget Pack 2",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\", \"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-02-05T00:43:41.636Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "6",
+    "object_repr": "Silver Pack",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\", \"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-02-05T00:43:59.787Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Chrome Box",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\", \"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-02-05T00:44:15.553Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "4",
+    "object_repr": "Budget Pack 1",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-02-05T00:44:57.397Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Lithium Box",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\", \"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-02-05T00:45:26.378Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "Diamond Box",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\", \"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-02-05T00:45:52.857Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "17",
+    "object_repr": "Empty 3D box",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-02-05T00:46:08.984Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "9",
+    "object_repr": "Colouring & Activity Books",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-02-05T00:46:25.619Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "8",
+    "object_repr": "Party Hats",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-02-05T00:46:43.695Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "10",
+    "object_repr": "Party bags A5",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-02-05T00:47:49.679Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "13",
+    "object_repr": "Customised chocolates",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-02-05T00:48:15.723Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "12",
+    "object_repr": "Water tags",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add site setting",
+    "content_type": 7,
+    "codename": "add_sitesetting"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change site setting",
+    "content_type": 7,
+    "codename": "change_sitesetting"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete site setting",
+    "content_type": 7,
+    "codename": "delete_sitesetting"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view site setting",
+    "content_type": 7,
+    "codename": "view_sitesetting"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add order",
+    "content_type": 8,
+    "codename": "add_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change order",
+    "content_type": 8,
+    "codename": "change_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete order",
+    "content_type": 8,
+    "codename": "delete_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view order",
+    "content_type": 8,
+    "codename": "view_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add product",
+    "content_type": 9,
+    "codename": "add_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change product",
+    "content_type": 9,
+    "codename": "change_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete product",
+    "content_type": 9,
+    "codename": "delete_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view product",
+    "content_type": 9,
+    "codename": "view_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add category",
+    "content_type": 10,
+    "codename": "add_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change category",
+    "content_type": 10,
+    "codename": "change_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete category",
+    "content_type": 10,
+    "codename": "delete_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view category",
+    "content_type": 10,
+    "codename": "view_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add order item",
+    "content_type": 11,
+    "codename": "add_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change order item",
+    "content_type": 11,
+    "codename": "change_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete order item",
+    "content_type": 11,
+    "codename": "delete_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view order item",
+    "content_type": 11,
+    "codename": "view_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 45,
+  "fields": {
+    "name": "Can add Gallery item",
+    "content_type": 12,
+    "codename": "add_galleryitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 46,
+  "fields": {
+    "name": "Can change Gallery item",
+    "content_type": 12,
+    "codename": "change_galleryitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 47,
+  "fields": {
+    "name": "Can delete Gallery item",
+    "content_type": 12,
+    "codename": "delete_galleryitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 48,
+  "fields": {
+    "name": "Can view Gallery item",
+    "content_type": 12,
+    "codename": "view_galleryitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 49,
+  "fields": {
+    "name": "Can add Review",
+    "content_type": 13,
+    "codename": "add_review"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 50,
+  "fields": {
+    "name": "Can change Review",
+    "content_type": 13,
+    "codename": "change_review"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 51,
+  "fields": {
+    "name": "Can delete Review",
+    "content_type": 13,
+    "codename": "delete_review"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 52,
+  "fields": {
+    "name": "Can view Review",
+    "content_type": 13,
+    "codename": "view_review"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 53,
+  "fields": {
+    "name": "Can add Contact message",
+    "content_type": 14,
+    "codename": "add_contactmessage"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 54,
+  "fields": {
+    "name": "Can change Contact message",
+    "content_type": 14,
+    "codename": "change_contactmessage"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 55,
+  "fields": {
+    "name": "Can delete Contact message",
+    "content_type": 14,
+    "codename": "delete_contactmessage"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 56,
+  "fields": {
+    "name": "Can view Contact message",
+    "content_type": 14,
+    "codename": "view_contactmessage"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$wgdepjYKTa1dIqQYTlzehp$ZT4wk45jvIqv7uMECkX98sSTfywe/qvnIG6wsVSsmHU=",
+    "last_login": "2026-02-04T23:32:46.917Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@partyfantasyzw.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-02-04T18:35:52.716Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "store",
+    "model": "sitesetting"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "store",
+    "model": "order"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "store",
+    "model": "product"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "store",
+    "model": "category"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "store",
+    "model": "orderitem"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 12,
+  "fields": {
+    "app_label": "store",
+    "model": "galleryitem"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 13,
+  "fields": {
+    "app_label": "store",
+    "model": "review"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 14,
+  "fields": {
+    "app_label": "store",
+    "model": "contactmessage"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "c20amdt742mdl7adalgwt0kqynh8jel9",
+  "fields": {
+    "session_data": ".eJxVjDsOgzAQBe_iOrJsB9tAmZ4zoOfddSCJQOJTIe4ekCiS9s282VSLdenadZap7VnVyqrb75ZAbxlOwC8Mz1HTOCxTn_Sp6IvOuhlZPo_L_Qt0mLvjXbEpQSzRlwnGWkimWKUimSKQC5V4Z2POgNxzFBRAcMZ7SkyOKYYjSpgWVW_7_gVTijxg:1vnnKF:V-XhD_2wQIzkLu3j1Cb5xpOHXHkn_Xi7chILhe21EU0",
+    "expire_date": "2026-02-19T00:34:27.896Z"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 1,
+  "fields": {
+    "name": "Party Boxes",
+    "slug": "party-boxes"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 2,
+  "fields": {
+    "name": "Budget Packs",
+    "slug": "budget-packs"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 3,
+  "fields": {
+    "name": "Party Packs",
+    "slug": "party-packs"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 4,
+  "fields": {
+    "name": "Other Party Favours",
+    "slug": "other-party-favours"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 5,
+  "fields": {
+    "name": "Empty Party Boxes",
+    "slug": "empty-party-boxes"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 1,
+  "fields": {
+    "category": 1,
+    "name": "Chrome Box",
+    "slug": "chrome-box",
+    "price": "3.50",
+    "description": "Niknaks\r\nToy\r\nChocolate\r\nSherbet\r\nLollipop",
+    "image": "products/chrome-box-sonic.jpg",
+    "is_active": true,
+    "created_at": "2026-02-04T00:00:00Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 2,
+  "fields": {
+    "category": 1,
+    "name": "Lithium Box",
+    "slug": "lithium-box",
+    "price": "4.00",
+    "description": "Lays\r\nToy\r\nChocolate\r\nSherbet\r\nLollipop",
+    "image": "products/lithium-box-rainbow.jpg",
+    "is_active": true,
+    "created_at": "2026-02-04T00:00:00Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 3,
+  "fields": {
+    "category": 1,
+    "name": "Diamond Box",
+    "slug": "diamond-box",
+    "price": "7.50",
+    "description": "Lays\r\nKinderjoy\r\nSunglasses\r\nJuice box\r\nChocolate\r\nToy\r\nSherbet\r\nLollipop",
+    "image": "products/diamond-box-panda.jpg",
+    "is_active": true,
+    "created_at": "2026-02-04T00:00:00Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 4,
+  "fields": {
+    "category": 2,
+    "name": "Budget Pack 1",
+    "slug": "budget-pack-1",
+    "price": "2.50",
+    "description": "Niknaks\r\nChocolate (KitKat/BarOne/Smarties/etc.)\r\nToy\r\nSherbet\r\nLollipop",
+    "image": "products/budget-pack-bumblebee.jpg",
+    "is_active": true,
+    "created_at": "2026-02-04T00:00:00Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 5,
+  "fields": {
+    "category": 2,
+    "name": "Budget Pack 2",
+    "slug": "budget-pack-2",
+    "price": "3.00",
+    "description": "Niknaks\r\nJuice box\r\nChocolate (KitKat/BarOne/Smarties/etc.)\r\nToy\r\nSherbet\r\nLollipop",
+    "image": "products/budget-pack-spiderman.jpg",
+    "is_active": true,
+    "created_at": "2026-02-04T00:00:00Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 6,
+  "fields": {
+    "category": 3,
+    "name": "Silver Pack",
+    "slug": "silver-pack",
+    "price": "2.00",
+    "description": "Lays\r\nToy",
+    "image": "products/silver-pack-spiderman.jpg",
+    "is_active": true,
+    "created_at": "2026-02-04T00:00:00Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 7,
+  "fields": {
+    "category": 3,
+    "name": "Gold Pack",
+    "slug": "gold-pack",
+    "price": "3.00",
+    "description": "Niknaks\nToy\nSherbet\nLollipop\nChocolate",
+    "image": "",
+    "is_active": true,
+    "created_at": "2026-02-04T00:00:00Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 8,
+  "fields": {
+    "category": 4,
+    "name": "Party Hats",
+    "slug": "party-hats",
+    "price": "1.50",
+    "description": "",
+    "image": "products/party-hats.jpg",
+    "is_active": true,
+    "created_at": "2026-02-04T00:00:00Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 9,
+  "fields": {
+    "category": 4,
+    "name": "Colouring & Activity Books",
+    "slug": "colouring-activity-books",
+    "price": "2.00",
+    "description": "",
+    "image": "products/coloring-book.jpg",
+    "is_active": true,
+    "created_at": "2026-02-04T00:00:00Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 10,
+  "fields": {
+    "category": 4,
+    "name": "Party bags A5",
+    "slug": "party-bags-a5",
+    "price": "2.00",
+    "description": "",
+    "image": "products/a5-size.jpg",
+    "is_active": true,
+    "created_at": "2026-02-04T00:00:00Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 11,
+  "fields": {
+    "category": 4,
+    "name": "Pringle Shakers",
+    "slug": "pringle-shakers",
+    "price": "4.00",
+    "description": "",
+    "image": "",
+    "is_active": true,
+    "created_at": "2026-02-04T00:00:00Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 12,
+  "fields": {
+    "category": 4,
+    "name": "Water tags",
+    "slug": "water-tags",
+    "price": "0.75",
+    "description": "",
+    "image": "products/corporate-water-ecobank.jpg",
+    "is_active": true,
+    "created_at": "2026-02-04T00:00:00Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 13,
+  "fields": {
+    "category": 4,
+    "name": "Customised chocolates",
+    "slug": "customised-chocolates",
+    "price": "1.50",
+    "description": "",
+    "image": "products/mothers-day-chocolates.jpg",
+    "is_active": true,
+    "created_at": "2026-02-04T00:00:00Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 14,
+  "fields": {
+    "category": 4,
+    "name": "Cutlery case",
+    "slug": "cutlery-case",
+    "price": "1.00",
+    "description": "",
+    "image": "",
+    "is_active": true,
+    "created_at": "2026-02-04T00:00:00Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 15,
+  "fields": {
+    "category": 4,
+    "name": "Plate card",
+    "slug": "plate-card",
+    "price": "1.00",
+    "description": "",
+    "image": "",
+    "is_active": true,
+    "created_at": "2026-02-04T00:00:00Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 16,
+  "fields": {
+    "category": 5,
+    "name": "Empty 2D box",
+    "slug": "empty-2d-box",
+    "price": "2.00",
+    "description": "",
+    "image": "",
+    "is_active": true,
+    "created_at": "2026-02-04T00:00:00Z"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 17,
+  "fields": {
+    "category": 5,
+    "name": "Empty 3D box",
+    "slug": "empty-3d-box",
+    "price": "3.00",
+    "description": "",
+    "image": "products/gallery-baby-shower.jpg",
+    "is_active": true,
+    "created_at": "2026-02-04T00:00:00Z"
+  }
+},
+{
+  "model": "store.sitesetting",
+  "pk": 1,
+  "fields": {
+    "delivery_fee": "5.00"
+  }
+},
+{
+  "model": "store.order",
+  "pk": 1,
+  "fields": {
+    "reference": "459F618D4D3D4E1794760B71DC1E7506",
+    "full_name": "Kudash",
+    "phone": "0771315735",
+    "email": "tadererak@yahoo.com",
+    "theme": "Spider-man",
+    "child_name": "Kudash",
+    "age": 10,
+    "collection_date": "2026-02-10",
+    "toy_preference": "unisex",
+    "delivery_method": "delivery",
+    "delivery_address": "2071 212th Street Kuwadzana 2, Harare",
+    "subtotal": "3.50",
+    "delivery_fee": "0.00",
+    "total": "3.50",
+    "status": "CREATED",
+    "created_at": "2026-02-04T20:23:33.429Z",
+    "paynow_reference": "",
+    "paynow_poll_url": "",
+    "paynow_redirect_url": ""
+  }
+},
+{
+  "model": "store.order",
+  "pk": 2,
+  "fields": {
+    "reference": "67F110F0F63E4973924DC123841A92C3",
+    "full_name": "Kudash",
+    "phone": "0771315735",
+    "email": "tadererak@yahoo.com",
+    "theme": "Barbie",
+    "child_name": "Kudash",
+    "age": 10,
+    "collection_date": "2026-02-10",
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "2.50",
+    "delivery_fee": "0.00",
+    "total": "2.50",
+    "status": "CREATED",
+    "created_at": "2026-02-04T20:26:52.841Z",
+    "paynow_reference": "",
+    "paynow_poll_url": "",
+    "paynow_redirect_url": ""
+  }
+},
+{
+  "model": "store.order",
+  "pk": 3,
+  "fields": {
+    "reference": "F6D4BF018371424992D6C1C713E4A6E8",
+    "full_name": "Kudash",
+    "phone": "0771315735",
+    "email": "tadererak@yahoo.com",
+    "theme": "Barbie",
+    "child_name": "Kudash",
+    "age": 10,
+    "collection_date": "2026-02-10",
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "4.00",
+    "delivery_fee": "0.00",
+    "total": "4.00",
+    "status": "CREATED",
+    "created_at": "2026-02-04T20:35:06.378Z",
+    "paynow_reference": "",
+    "paynow_poll_url": "",
+    "paynow_redirect_url": ""
+  }
+},
+{
+  "model": "store.order",
+  "pk": 4,
+  "fields": {
+    "reference": "666853B9C91E4F958FBDB5B62E1CAE81",
+    "full_name": "",
+    "phone": "",
+    "email": "",
+    "theme": "",
+    "child_name": "",
+    "age": null,
+    "collection_date": null,
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "3.00",
+    "delivery_fee": "0.00",
+    "total": "3.00",
+    "status": "CREATED",
+    "created_at": "2026-02-04T20:36:28.220Z",
+    "paynow_reference": "",
+    "paynow_poll_url": "",
+    "paynow_redirect_url": ""
+  }
+},
+{
+  "model": "store.order",
+  "pk": 5,
+  "fields": {
+    "reference": "3A0A54B5372747E99B7136329EDB52D9",
+    "full_name": "",
+    "phone": "",
+    "email": "",
+    "theme": "",
+    "child_name": "",
+    "age": null,
+    "collection_date": null,
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "4.00",
+    "delivery_fee": "0.00",
+    "total": "4.00",
+    "status": "PENDING",
+    "created_at": "2026-02-04T20:43:17.794Z",
+    "paynow_reference": "",
+    "paynow_poll_url": "https://www.paynow.co.zw/Interface/CheckPayment/?guid=7770466a-6c7f-496c-b25f-006381877e85",
+    "paynow_redirect_url": "https://www.paynow.co.zw/Payment/ConfirmPayment/38148608"
+  }
+},
+{
+  "model": "store.order",
+  "pk": 6,
+  "fields": {
+    "reference": "3922306EFE484AF98EC23E32072838DE",
+    "full_name": "Kudash",
+    "phone": "0771315735",
+    "email": "tadererak@gmail.com",
+    "theme": "Barbie",
+    "child_name": "Kudash",
+    "age": 10,
+    "collection_date": "2026-02-10",
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "7.50",
+    "delivery_fee": "0.00",
+    "total": "7.50",
+    "status": "PENDING",
+    "created_at": "2026-02-04T20:48:30.172Z",
+    "paynow_reference": "",
+    "paynow_poll_url": "https://www.paynow.co.zw/Interface/CheckPayment/?guid=902f54ab-928d-42cc-8dde-cc2fdfdf8625",
+    "paynow_redirect_url": "https://www.paynow.co.zw/Payment/ConfirmPayment/38148806"
+  }
+},
+{
+  "model": "store.order",
+  "pk": 7,
+  "fields": {
+    "reference": "62AE8360403E43D79028A791C3F221B6",
+    "full_name": "Kudash",
+    "phone": "0771315735",
+    "email": "tadererak@yahoo.com",
+    "theme": "Barbie",
+    "child_name": "Kudash",
+    "age": 10,
+    "collection_date": "2026-02-10",
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "3.00",
+    "delivery_fee": "0.00",
+    "total": "3.00",
+    "status": "PENDING",
+    "created_at": "2026-02-04T21:01:42.242Z",
+    "paynow_reference": "",
+    "paynow_poll_url": "https://www.paynow.co.zw/Interface/CheckPayment/?guid=ff197c0e-5b4b-4c45-a7c6-5af6049bdaa9",
+    "paynow_redirect_url": "https://www.paynow.co.zw/Payment/ConfirmPayment/38149422"
+  }
+},
+{
+  "model": "store.order",
+  "pk": 8,
+  "fields": {
+    "reference": "3969F94C0199482C8670D001A0D60D4A",
+    "full_name": "",
+    "phone": "",
+    "email": "",
+    "theme": "",
+    "child_name": "",
+    "age": null,
+    "collection_date": null,
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "3.00",
+    "delivery_fee": "0.00",
+    "total": "3.00",
+    "status": "PENDING",
+    "created_at": "2026-02-04T21:10:10.323Z",
+    "paynow_reference": "",
+    "paynow_poll_url": "https://www.paynow.co.zw/Interface/CheckPayment/?guid=93157d1f-4831-45d0-95c3-f11c58bd2de1",
+    "paynow_redirect_url": "https://www.paynow.co.zw/Payment/ConfirmPayment/38149774"
+  }
+},
+{
+  "model": "store.order",
+  "pk": 9,
+  "fields": {
+    "reference": "B466FD8C97B348BEA962E0F82B9D97CC",
+    "full_name": "",
+    "phone": "",
+    "email": "",
+    "theme": "",
+    "child_name": "",
+    "age": null,
+    "collection_date": null,
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "7.50",
+    "delivery_fee": "0.00",
+    "total": "7.50",
+    "status": "PENDING",
+    "created_at": "2026-02-04T21:11:06.021Z",
+    "paynow_reference": "",
+    "paynow_poll_url": "https://www.paynow.co.zw/Interface/CheckPayment/?guid=b099ccf0-30e1-425b-817d-4142d7d4a4fc",
+    "paynow_redirect_url": "https://www.paynow.co.zw/Payment/ConfirmPayment/38149817"
+  }
+},
+{
+  "model": "store.order",
+  "pk": 10,
+  "fields": {
+    "reference": "A5D436C9A1A44DCB84C72675EBC8A3BD",
+    "full_name": "",
+    "phone": "",
+    "email": "",
+    "theme": "",
+    "child_name": "",
+    "age": null,
+    "collection_date": null,
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "3.00",
+    "delivery_fee": "0.00",
+    "total": "3.00",
+    "status": "PENDING",
+    "created_at": "2026-02-04T21:59:15.893Z",
+    "paynow_reference": "",
+    "paynow_poll_url": "https://www.paynow.co.zw/Interface/CheckPayment/?guid=42495b9b-31c1-4b32-8129-ab141627b545",
+    "paynow_redirect_url": "https://www.paynow.co.zw/Payment/ConfirmPayment/38151364"
+  }
+},
+{
+  "model": "store.order",
+  "pk": 11,
+  "fields": {
+    "reference": "E04E2C3A225D4022A74773136DAACF8F",
+    "full_name": "",
+    "phone": "",
+    "email": "",
+    "theme": "",
+    "child_name": "",
+    "age": null,
+    "collection_date": null,
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "2.50",
+    "delivery_fee": "0.00",
+    "total": "2.50",
+    "status": "PAID",
+    "created_at": "2026-02-04T22:01:36.483Z",
+    "paynow_reference": "",
+    "paynow_poll_url": "https://www.paynow.co.zw/Interface/CheckPayment/?guid=a337030b-ac46-44a3-a1aa-96e70e9edd00",
+    "paynow_redirect_url": "https://www.paynow.co.zw/Payment/ConfirmPayment/38151422"
+  }
+},
+{
+  "model": "store.order",
+  "pk": 12,
+  "fields": {
+    "reference": "8387E190171D4C07BFE9995524557175",
+    "full_name": "Kudash",
+    "phone": "0771315735",
+    "email": "tadererak@yahoo.com",
+    "theme": "Barbie",
+    "child_name": "Kudash",
+    "age": 10,
+    "collection_date": "2026-02-10",
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "6.00",
+    "delivery_fee": "0.00",
+    "total": "6.00",
+    "status": "CREATED",
+    "created_at": "2026-02-04T22:46:06.093Z",
+    "paynow_reference": "",
+    "paynow_poll_url": "",
+    "paynow_redirect_url": ""
+  }
+},
+{
+  "model": "store.order",
+  "pk": 13,
+  "fields": {
+    "reference": "42285D232C424E06B789D18E4A11BA19",
+    "full_name": "Kudash",
+    "phone": "0771111111",
+    "email": "projects@codexware.net",
+    "theme": "Barbie",
+    "child_name": "Kudash",
+    "age": 10,
+    "collection_date": "2026-02-15",
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "2.50",
+    "delivery_fee": "0.00",
+    "total": "2.50",
+    "status": "PAID",
+    "created_at": "2026-02-04T22:51:21.867Z",
+    "paynow_reference": "38152569",
+    "paynow_poll_url": "https://www.paynow.co.zw/Interface/CheckPayment/?guid=215297c0-aabb-4d10-914a-e6469255bb96",
+    "paynow_redirect_url": ""
+  }
+},
+{
+  "model": "store.order",
+  "pk": 14,
+  "fields": {
+    "reference": "F6CD138B8F204F84800B92E67F9AE4EC",
+    "full_name": "Kudash",
+    "phone": "0773333333",
+    "email": "projects@codexware.net",
+    "theme": "",
+    "child_name": "",
+    "age": null,
+    "collection_date": null,
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "3.00",
+    "delivery_fee": "0.00",
+    "total": "3.00",
+    "status": "FAILED",
+    "created_at": "2026-02-04T22:58:24.721Z",
+    "paynow_reference": "38152709",
+    "paynow_poll_url": "https://www.paynow.co.zw/Interface/CheckPayment/?guid=2d2e36d9-1388-4c14-aa52-c52b7ab278a0",
+    "paynow_redirect_url": ""
+  }
+},
+{
+  "model": "store.order",
+  "pk": 15,
+  "fields": {
+    "reference": "8D46E8D9D7994F9F93D50C4382C83F7C",
+    "full_name": "",
+    "phone": "0774444444",
+    "email": "projects@codexware.net",
+    "theme": "",
+    "child_name": "",
+    "age": null,
+    "collection_date": null,
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "2.00",
+    "delivery_fee": "0.00",
+    "total": "2.00",
+    "status": "CREATED",
+    "created_at": "2026-02-04T22:59:45.000Z",
+    "paynow_reference": "",
+    "paynow_poll_url": "",
+    "paynow_redirect_url": ""
+  }
+},
+{
+  "model": "store.order",
+  "pk": 16,
+  "fields": {
+    "reference": "97308436971D4B0F8865216B8146271D",
+    "full_name": "",
+    "phone": "0771111111",
+    "email": "projects@codexware.net",
+    "theme": "",
+    "child_name": "",
+    "age": null,
+    "collection_date": null,
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "3.00",
+    "delivery_fee": "0.00",
+    "total": "3.00",
+    "status": "PAID",
+    "created_at": "2026-02-04T23:03:45.035Z",
+    "paynow_reference": "38152792",
+    "paynow_poll_url": "https://www.paynow.co.zw/Interface/CheckPayment/?guid=9f9146d1-386b-4896-aad8-841da6c75b87",
+    "paynow_redirect_url": ""
+  }
+},
+{
+  "model": "store.order",
+  "pk": 17,
+  "fields": {
+    "reference": "05FECF2A803443228C0904301B4DF0FB",
+    "full_name": "",
+    "phone": "0772222222",
+    "email": "projects@codexware.net",
+    "theme": "",
+    "child_name": "",
+    "age": null,
+    "collection_date": null,
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "3.00",
+    "delivery_fee": "0.00",
+    "total": "3.00",
+    "status": "PAID",
+    "created_at": "2026-02-04T23:04:24.200Z",
+    "paynow_reference": "38152804",
+    "paynow_poll_url": "https://www.paynow.co.zw/Interface/CheckPayment/?guid=57eac058-86ab-439f-8e18-90e283f2f404",
+    "paynow_redirect_url": ""
+  }
+},
+{
+  "model": "store.order",
+  "pk": 18,
+  "fields": {
+    "reference": "B85F36DBD02649B6B29BB8203F0E4F54",
+    "full_name": "Kudash twakkie",
+    "phone": "0771111111",
+    "email": "projects@codexware.net",
+    "theme": "Barbie",
+    "child_name": "Kudash",
+    "age": 10,
+    "collection_date": "2026-02-18",
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "9.50",
+    "delivery_fee": "0.00",
+    "total": "9.50",
+    "status": "PAID",
+    "created_at": "2026-02-05T00:23:45.153Z",
+    "paynow_reference": "38153776",
+    "paynow_poll_url": "https://www.paynow.co.zw/Interface/CheckPayment/?guid=ecf9c6b5-6b36-455c-94b9-cadcb0a40a99",
+    "paynow_redirect_url": ""
+  }
+},
+{
+  "model": "store.order",
+  "pk": 19,
+  "fields": {
+    "reference": "2540611CB5614726B4F08A1891B899F0",
+    "full_name": "",
+    "phone": "",
+    "email": "",
+    "theme": "",
+    "child_name": "",
+    "age": null,
+    "collection_date": null,
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "2.50",
+    "delivery_fee": "0.00",
+    "total": "2.50",
+    "status": "CREATED",
+    "created_at": "2026-02-05T00:32:04.211Z",
+    "paynow_reference": "",
+    "paynow_poll_url": "",
+    "paynow_redirect_url": ""
+  }
+},
+{
+  "model": "store.order",
+  "pk": 20,
+  "fields": {
+    "reference": "E74623BC45284E06AEF2653D4D5AE503",
+    "full_name": "",
+    "phone": "",
+    "email": "",
+    "theme": "",
+    "child_name": "",
+    "age": null,
+    "collection_date": null,
+    "toy_preference": "girls",
+    "delivery_method": "pickup",
+    "delivery_address": "",
+    "subtotal": "3.00",
+    "delivery_fee": "0.00",
+    "total": "3.00",
+    "status": "CREATED",
+    "created_at": "2026-02-05T00:34:26.866Z",
+    "paynow_reference": "",
+    "paynow_poll_url": "",
+    "paynow_redirect_url": ""
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 1,
+  "fields": {
+    "order": 1,
+    "product": 1,
+    "qty": 1,
+    "unit_price": "3.50",
+    "line_total": "3.50"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 2,
+  "fields": {
+    "order": 2,
+    "product": 4,
+    "qty": 1,
+    "unit_price": "2.50",
+    "line_total": "2.50"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 3,
+  "fields": {
+    "order": 3,
+    "product": 2,
+    "qty": 1,
+    "unit_price": "4.00",
+    "line_total": "4.00"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 4,
+  "fields": {
+    "order": 4,
+    "product": 5,
+    "qty": 1,
+    "unit_price": "3.00",
+    "line_total": "3.00"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 5,
+  "fields": {
+    "order": 5,
+    "product": 2,
+    "qty": 1,
+    "unit_price": "4.00",
+    "line_total": "4.00"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 6,
+  "fields": {
+    "order": 6,
+    "product": 3,
+    "qty": 1,
+    "unit_price": "7.50",
+    "line_total": "7.50"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 7,
+  "fields": {
+    "order": 7,
+    "product": 5,
+    "qty": 1,
+    "unit_price": "3.00",
+    "line_total": "3.00"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 8,
+  "fields": {
+    "order": 8,
+    "product": 5,
+    "qty": 1,
+    "unit_price": "3.00",
+    "line_total": "3.00"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 9,
+  "fields": {
+    "order": 9,
+    "product": 3,
+    "qty": 1,
+    "unit_price": "7.50",
+    "line_total": "7.50"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 10,
+  "fields": {
+    "order": 10,
+    "product": 5,
+    "qty": 1,
+    "unit_price": "3.00",
+    "line_total": "3.00"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 11,
+  "fields": {
+    "order": 11,
+    "product": 4,
+    "qty": 1,
+    "unit_price": "2.50",
+    "line_total": "2.50"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 12,
+  "fields": {
+    "order": 12,
+    "product": 1,
+    "qty": 1,
+    "unit_price": "3.50",
+    "line_total": "3.50"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 13,
+  "fields": {
+    "order": 12,
+    "product": 4,
+    "qty": 1,
+    "unit_price": "2.50",
+    "line_total": "2.50"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 14,
+  "fields": {
+    "order": 13,
+    "product": 4,
+    "qty": 1,
+    "unit_price": "2.50",
+    "line_total": "2.50"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 15,
+  "fields": {
+    "order": 14,
+    "product": 5,
+    "qty": 1,
+    "unit_price": "3.00",
+    "line_total": "3.00"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 16,
+  "fields": {
+    "order": 15,
+    "product": 16,
+    "qty": 1,
+    "unit_price": "2.00",
+    "line_total": "2.00"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 17,
+  "fields": {
+    "order": 16,
+    "product": 5,
+    "qty": 1,
+    "unit_price": "3.00",
+    "line_total": "3.00"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 18,
+  "fields": {
+    "order": 17,
+    "product": 17,
+    "qty": 1,
+    "unit_price": "3.00",
+    "line_total": "3.00"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 19,
+  "fields": {
+    "order": 18,
+    "product": 1,
+    "qty": 1,
+    "unit_price": "3.50",
+    "line_total": "3.50"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 20,
+  "fields": {
+    "order": 18,
+    "product": 5,
+    "qty": 2,
+    "unit_price": "3.00",
+    "line_total": "6.00"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 21,
+  "fields": {
+    "order": 19,
+    "product": 4,
+    "qty": 1,
+    "unit_price": "2.50",
+    "line_total": "2.50"
+  }
+},
+{
+  "model": "store.orderitem",
+  "pk": 22,
+  "fields": {
+    "order": 20,
+    "product": 5,
+    "qty": 1,
+    "unit_price": "3.00",
+    "line_total": "3.00"
+  }
+},
+{
+  "model": "store.galleryitem",
+  "pk": 1,
+  "fields": {
+    "image": "",
+    "video": "gallery/hero.mp4",
+    "caption": "",
+    "created_at": "2026-02-04T23:47:27.884Z"
+  }
+},
+{
+  "model": "store.contactmessage",
+  "pk": 1,
+  "fields": {
+    "name": "Kudash",
+    "email": "projects@codexware.net",
+    "phone": "+14479025849",
+    "message": "This is a test",
+    "created_at": "2026-02-05T00:10:24.895Z"
+  }
+},
+{
+  "model": "store.contactmessage",
+  "pk": 2,
+  "fields": {
+    "name": "Kudash",
+    "email": "projects@codexware.net",
+    "phone": "+14479025849",
+    "message": "This is a test!!",
+    "created_at": "2026-02-05T00:18:35.888Z"
+  }
+},
+{
+  "model": "store.contactmessage",
+  "pk": 3,
+  "fields": {
+    "name": "Kudash",
+    "email": "projects@codexware.net",
+    "phone": "+14479025849",
+    "message": "This is a test!!",
+    "created_at": "2026-02-05T00:19:19.622Z"
+  }
+},
+{
+  "model": "store.contactmessage",
+  "pk": 4,
+  "fields": {
+    "name": "Kudash",
+    "email": "projects@codexware.net",
+    "phone": "+14479025849",
+    "message": "This is a test!!",
+    "created_at": "2026-02-05T00:19:25.945Z"
+  }
+},
+{
+  "model": "store.contactmessage",
+  "pk": 5,
+  "fields": {
+    "name": "Kudash",
+    "email": "projects@codexware.net",
+    "phone": "+14479025849",
+    "message": "This is a test!!",
+    "created_at": "2026-02-05T00:20:12.494Z"
+  }
+},
+{
+  "model": "store.contactmessage",
+  "pk": 6,
+  "fields": {
+    "name": "Kudash",
+    "email": "projects@codexware.net",
+    "phone": "+14479025849",
+    "message": "This is a test!!",
+    "created_at": "2026-02-05T00:20:14.486Z"
+  }
+},
+{
+  "model": "store.contactmessage",
+  "pk": 7,
+  "fields": {
+    "name": "fff",
+    "email": "",
+    "phone": "",
+    "message": "fff",
+    "created_at": "2026-02-05T00:20:44.817Z"
+  }
+},
+{
+  "model": "store.contactmessage",
+  "pk": 8,
+  "fields": {
+    "name": "Kuda",
+    "email": "kuda@gmail.com",
+    "phone": "0771315735",
+    "message": "test",
+    "created_at": "2026-02-05T00:22:09.999Z"
+  }
+},
+{
+  "model": "store.review",
+  "pk": 1,
+  "fields": {
+    "name": "Tariro M.",
+    "email": "",
+    "rating": 5,
+    "text": "Absolutely loved the princess party box! Everything was so well put together and my daughter had the best birthday. Delivery was quick and the quality was top notch. Will definitely order again for the next celebration.",
+    "is_visible": true,
+    "created_at": "2026-01-20T10:00:00Z"
+  }
+},
+{
+  "model": "store.review",
+  "pk": 2,
+  "fields": {
+    "name": "Blessing Chikwanha",
+    "email": "blessing@example.com",
+    "rating": 5,
+    "text": "Party Fantasy made my son's superhero party unforgettable. The decorations were premium and the kids loved every detail. Highly recommend for anyone in Zimbabwe looking for stress-free party supplies!",
+    "is_visible": true,
+    "created_at": "2026-01-18T14:30:00Z"
+  }
+},
+{
+  "model": "store.review",
+  "pk": 3,
+  "fields": {
+    "name": "Rumbidzai",
+    "email": "",
+    "rating": 4,
+    "text": "Great experience from start to finish. The theme we chose was perfect and the EcoCash payment was so easy. Only minor delay with delivery but they kept me updated. Very happy with the service.",
+    "is_visible": true,
+    "created_at": "2025-01-15T09:15:00Z"
+  }
+},
+{
+  "model": "store.review",
+  "pk": 4,
+  "fields": {
+    "name": "David Moyo",
+    "email": "david.m@example.com",
+    "rating": 5,
+    "text": "We ordered corporate gift boxes for our team and they were a hit! Professional, creative, and delivered on time. Party Fantasy isn't just for kids û their attention to detail works for any occasion.",
+    "is_visible": true,
+    "created_at": "2026-01-12T11:00:00Z"
+  }
+},
+{
+  "model": "store.review",
+  "pk": 5,
+  "fields": {
+    "name": "Sarah T.",
+    "email": "",
+    "rating": 5,
+    "text": "First time using Party Fantasy and I'm impressed. The unicorn party box was exactly as described, beautiful packaging and my little one was over the moon. Customer service was friendly and helpful.",
+    "is_visible": true,
+    "created_at": "2025-01-10T16:45:00Z"
+  }
+},
+{
+  "model": "store.review",
+  "pk": 6,
+  "fields": {
+    "name": "Tendai",
+    "email": "tendai@example.com",
+    "rating": 4,
+    "text": "Quality products and fair USD pricing. Delivery to Harare was smooth. Would have given 5 stars but one item had a small defect û they offered to replace it quickly. Good people to work with.",
+    "is_visible": true,
+    "created_at": "2026-01-08T08:20:00Z"
+  }
+},
+{
+  "model": "store.review",
+  "pk": 7,
+  "fields": {
+    "name": "Nyasha M.",
+    "email": "",
+    "rating": 5,
+    "text": "Best party supplies in Zimbabwe! The variety of themes and the fact that everything comes in one box saved me so much time. Already planning our next order for my nephew's birthday.",
+    "is_visible": true,
+    "created_at": "2026-01-05T13:00:00Z"
+  }
+},
+{
+  "model": "store.review",
+  "pk": 8,
+  "fields": {
+    "name": "Grace Ncube",
+    "email": "grace.n@example.com",
+    "rating": 5,
+    "text": "From ordering online to delivery, everything was seamless. The party box had more than we expected û balloons, tableware, favours, all matching. Made our celebration extra special. Thank you Party Fantasy!",
+    "is_visible": true,
+    "created_at": "2026-01-02T10:30:00Z"
+  }
+},
+{
+  "model": "store.review",
+  "pk": 9,
+  "fields": {
+    "name": "Michael K.",
+    "email": "",
+    "rating": 4,
+    "text": "Solid experience. Picked up from their location and the team was very accommodating. The kids' party was a success and we got lots of compliments on the setup. Will recommend to friends.",
+    "is_visible": true,
+    "created_at": "2025-12-28T15:00:00Z"
+  }
+},
+{
+  "model": "store.review",
+  "pk": 10,
+  "fields": {
+    "name": "Rudo",
+    "email": "rudo@example.com",
+    "rating": 5,
+    "text": "I've tried a few party suppliers and Party Fantasy ZW is now my go-to. Creative, reliable, and they really care about making your day special. The gallery on their site shows real parties û what you see is what you get!",
+    "is_visible": true,
+    "created_at": "2025-12-25T12:00:00Z"
+  }
+},
+{
+  "model": "store.review",
+  "pk": 11,
+  "fields": {
+    "name": "Kudash",
+    "email": "",
+    "rating": 5,
+    "text": "They are the best",
+    "is_visible": true,
+    "created_at": "2026-02-04T23:45:00.647Z"
+  }
+}
+]

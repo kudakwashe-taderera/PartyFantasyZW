@@ -18,6 +18,93 @@ from .utils import (
 from . import paynow
 
 
+def _send_admin_order_paid_email(order):
+    lines = [
+        f"Order reference: {order.reference}",
+        f"Name: {order.full_name}",
+        f"Phone: {order.phone}",
+        f"Email: {order.email or '(not provided)'}",
+        f"Theme: {order.theme or '-'}",
+        f"Child name: {order.child_name or '-'}",
+        f"Age: {order.age or '-'}",
+        f"Collection date: {order.collection_date or '-'}",
+        f"Toy preference: {order.toy_preference or '-'}",
+        f"Delivery: {order.delivery_method or '-'}",
+        f"Address: {order.delivery_address or '-'}",
+        "",
+        "Items:",
+    ]
+    for oi in order.items.all():
+        lines.append(f"  • {oi.product.name} x {oi.qty} @ $ {oi.unit_price} = $ {oi.line_total}")
+    lines.extend(["", f"Subtotal: $ {order.subtotal}", f"Delivery: $ {order.delivery_fee}", f"Total: $ {order.total}", "", "[PAID]"])
+    body = "\n".join(lines)
+    send_mail(
+        f"Order paid #{order.reference} – Party Fantasy ZW",
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        [settings.ADMIN_EMAIL],
+        fail_silently=True,
+    )
+
+
+def _send_customer_order_paid_email(order):
+    if not order.email or not order.email.strip():
+        return
+    lines = [
+        f"Order reference: {order.reference}",
+        "",
+        "Order summary:",
+        f"  Subtotal:    $ {order.subtotal}",
+        f"  Delivery:    $ {order.delivery_fee}",
+        f"  Total:       $ {order.total}",
+        "",
+        "Items:",
+    ]
+    for oi in order.items.all():
+        lines.append(f"  • {oi.product.name} x {oi.qty} @ $ {oi.unit_price} = $ {oi.line_total}")
+    summary = "\n".join(lines)
+    name = (order.full_name or "there").strip() or "there"
+    body = (
+        f"Dear {name},\n\n"
+        "Thank you for your order. We have received your payment and your order is confirmed.\n\n"
+        f"{summary}\n\n"
+        "We will be in touch regarding delivery or collection. "
+        "If you have any questions, please reply to this email or contact us—we are happy to help.\n\n"
+        "Best regards,\n"
+        "The Party Fantasy ZW Team"
+    )
+    send_mail(
+        f"Order confirmed – #{order.reference} – Party Fantasy ZW",
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        [order.email.strip()],
+        fail_silently=True,
+    )
+
+
+def _send_customer_payment_failed_email(order):
+    if not order.email or not order.email.strip():
+        return
+    name = (order.full_name or "there").strip() or "there"
+    body = (
+        f"Dear {name},\n\n"
+        "We are sorry, but the payment for your order could not be completed. "
+        "Your payment may have been cancelled or declined. No charges have been made to your account.\n\n"
+        f"Order reference: {order.reference}\n\n"
+        "If you would like to complete your purchase, you can try again from the payment page or place a new order on our website. "
+        "If you need any assistance, please reply to this email or contact us—we are here to help.\n\n"
+        "Best regards,\n"
+        "The Party Fantasy ZW Team"
+    )
+    send_mail(
+        f"Payment not completed – Order #{order.reference} – Party Fantasy ZW",
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        [order.email.strip()],
+        fail_silently=True,
+    )
+
+
 def gallery(request):
     items = list(GalleryItem.objects.all())
     return render(request, "gallery.html", {"items": items})
@@ -198,47 +285,6 @@ def checkout(request):
                     unit_price=unit_price,
                     line_total=line_total,
                 )
-            lines = [
-                f"Order reference: {order.reference}",
-                f"Name: {order.full_name}",
-                f"Phone: {order.phone}",
-                f"Email: {order.email or '(not provided)'}",
-                f"Theme: {order.theme or '-'}",
-                f"Child name: {order.child_name or '-'}",
-                f"Age: {order.age or '-'}",
-                f"Collection date: {order.collection_date or '-'}",
-                f"Toy preference: {order.toy_preference or '-'}",
-                f"Delivery: {order.delivery_method or '-'}",
-                f"Address: {order.delivery_address or '-'}",
-                "",
-                "Items:",
-            ]
-            for oi in order.items.all():
-                lines.append(f"  • {oi.product.name} x {oi.qty} @ $ {oi.unit_price} = $ {oi.line_total}")
-            lines.extend(["", f"Subtotal: $ {order.subtotal}", f"Delivery: $ {order.delivery_fee}", f"Total: $ {order.total}"])
-            order_summary = "\n".join(lines)
-            send_mail(
-                f"New order #{order.reference} – Party Fantasy ZW",
-                order_summary,
-                settings.DEFAULT_FROM_EMAIL,
-                [settings.ADMIN_EMAIL],
-                fail_silently=True,
-            )
-            if order.email and order.email.strip():
-                customer_body = (
-                    f"Hi {order.full_name or 'there'},\n\n"
-                    "Thank you for your order with Party Fantasy ZW.\n\n"
-                    f"{order_summary}\n\n"
-                    "We'll be in touch about payment and delivery. If you have any questions, just reply to this email or contact us.\n\n"
-                    "— Party Fantasy ZW"
-                )
-                send_mail(
-                    f"Order received #{order.reference} – Party Fantasy ZW",
-                    customer_body,
-                    settings.DEFAULT_FROM_EMAIL,
-                    [order.email.strip()],
-                    fail_silently=True,
-                )
             clear_cart(request)
             return redirect("payment_status", reference=order.reference)
     else:
@@ -270,11 +316,18 @@ def payment_return(request):
 
 def payment_status(request, reference):
     order = get_object_or_404(Order, reference=reference)
+    was_paid = order.status == Order.STATUS_PAID
+    was_failed = order.status == Order.STATUS_FAILED
     if request.method == "POST":
         paynow.check_payment_status(order)
         return redirect("payment_status", reference=order.reference)
     paynow.check_payment_status(order)
     order.refresh_from_db()
+    if not was_paid and order.status == Order.STATUS_PAID:
+        _send_admin_order_paid_email(order)
+        _send_customer_order_paid_email(order)
+    if not was_failed and order.status == Order.STATUS_FAILED:
+        _send_customer_payment_failed_email(order)
     context = {
         "order": order,
         "paynow_configured": paynow.is_configured(),
@@ -340,7 +393,15 @@ def paynow_result(request):
     order = Order.objects.filter(reference=reference).first()
     if not order:
         return HttpResponse("OK", status=200)
+    was_paid = order.status == Order.STATUS_PAID
+    was_failed = order.status == Order.STATUS_FAILED
     paynow.check_payment_status(order)
+    order.refresh_from_db()
+    if not was_paid and order.status == Order.STATUS_PAID:
+        _send_admin_order_paid_email(order)
+        _send_customer_order_paid_email(order)
+    if not was_failed and order.status == Order.STATUS_FAILED:
+        _send_customer_payment_failed_email(order)
     return HttpResponse("OK", status=200)
 
 
@@ -362,8 +423,15 @@ def ecocash_start(request):
 
 def paynow_status_json(request, order_reference):
     order = get_object_or_404(Order, reference=order_reference)
+    was_paid = order.status == Order.STATUS_PAID
+    was_failed = order.status == Order.STATUS_FAILED
     paynow.check_payment_status(order)
     order.refresh_from_db()
+    if not was_paid and order.status == Order.STATUS_PAID:
+        _send_admin_order_paid_email(order)
+        _send_customer_order_paid_email(order)
+    if not was_failed and order.status == Order.STATUS_FAILED:
+        _send_customer_payment_failed_email(order)
     paid = order.status == Order.STATUS_PAID
     status = order.status
     message = "Paid" if paid else ("Failed or cancelled" if order.status == Order.STATUS_FAILED else "Pending")
