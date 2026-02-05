@@ -285,7 +285,6 @@ def checkout(request):
                     unit_price=unit_price,
                     line_total=line_total,
                 )
-            clear_cart(request)
             return redirect("payment_status", reference=order.reference)
     else:
         form = CheckoutForm()
@@ -320,6 +319,12 @@ def payment_status(request, reference):
     was_failed = order.status == Order.STATUS_FAILED
     if request.method == "POST":
         paynow.check_payment_status(order)
+        order.refresh_from_db()
+        if not was_paid and order.status == Order.STATUS_PAID:
+            _send_admin_order_paid_email(order)
+            _send_customer_order_paid_email(order)
+        if not was_failed and order.status == Order.STATUS_FAILED:
+            _send_customer_payment_failed_email(order)
         return redirect("payment_status", reference=order.reference)
     paynow.check_payment_status(order)
     order.refresh_from_db()
@@ -334,6 +339,7 @@ def payment_status(request, reference):
         "ecocash_error": request.session.pop("ecocash_error", None),
     }
     if order.status == Order.STATUS_PAID:
+        clear_cart(request)
         return render(request, "payment_success.html", context)
     if order.status == Order.STATUS_FAILED:
         return render(request, "payment_cancelled.html", context)
