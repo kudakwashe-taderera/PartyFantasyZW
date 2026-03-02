@@ -1,4 +1,6 @@
 from django import forms
+from django.utils import timezone
+from datetime import timedelta
 
 
 TOY_PREFERENCE_CHOICES = [
@@ -27,12 +29,27 @@ class CheckoutForm(forms.Form):
     phone = forms.CharField(max_length=50, required=False, widget=forms.TextInput(attrs={"class": input_class}))
     email = forms.EmailField(required=False, widget=forms.EmailInput(attrs={"class": input_class}))
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # enforce HTML min on date picker so browser blocks earlier values
+        min_date = timezone.localdate() + timedelta(days=3)
+        self.fields["collection_date"].widget.attrs.setdefault("class", self.input_class)
+        self.fields["collection_date"].widget.attrs["min"] = min_date.isoformat()
+
     def clean(self):
         data = super().clean()
         method = data.get("delivery_method")
         address = data.get("delivery_address")
         if method == "delivery" and not address:
             self.add_error("delivery_address", "Delivery address is required for delivery.")
+        # additional validation on collection_date
+        collection_date = data.get("collection_date")
+        if collection_date:
+            min_date = timezone.localdate() + timedelta(days=3)
+            if collection_date < min_date:
+                raise forms.ValidationError(
+                    "Minimum collection date is 3 days from today. If urgent, contact us for approval first."
+                )
         return data
 
 

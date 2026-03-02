@@ -26,6 +26,9 @@
                         <div>
                             <label for="{{ form.collection_date.id_for_label }}" class="block text-sm font-medium text-neutral-700 mb-1">Collection date</label>
                             {{ form.collection_date }}
+                            {% if form.collection_date.errors %}
+                            <p class="text-sm text-red-600 mt-1">{{ form.collection_date.errors.0 }}</p>
+                            {% endif %}
                         </div>
                         <div class="sm:col-span-2">
                             <label for="{{ form.toy_preference.id_for_label }}" class="block text-sm font-medium text-neutral-700 mb-1">Toys preference</label>
@@ -78,7 +81,9 @@
                     Online payments are not fully configured yet. Your order will still be created, but you may need to arrange payment directly with Party Fantasy ZW.
                 </div>
                 {% endif %}
-                <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 rounded-2xl font-medium text-white bg-rose-500 hover:bg-rose-600 border border-rose-500 transition-colors">Place order and pay with EcoCash</button>
+                <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 rounded-2xl font-medium text-white bg-rose-500 hover:bg-rose-600 border border-rose-500 transition-colors">
+                    Place Order (Confirmation via WhatsApp)
+                </button>
             </form>
         </div>
         <aside id="checkout-summary" class="lg:col-span-1" data-subtotal="{{ subtotal|floatformat:2 }}" data-delivery-fee="{{ delivery_fee_value|floatformat:2 }}">

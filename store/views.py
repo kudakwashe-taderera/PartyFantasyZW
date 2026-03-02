@@ -298,21 +298,26 @@ def checkout(request):
     items, subtotal = get_cart_items(request)
     if not items:
         return redirect("cart")
+
     setting = get_site_setting()
     delivery_fee_value = setting.delivery_fee
     pickup_total = subtotal
     delivery_total = subtotal + delivery_fee_value
+
     if request.method == "POST":
         form = CheckoutForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
+
             delivery_method = data.get("delivery_method")
             if delivery_method == "delivery":
                 delivery_fee = delivery_fee_value
             else:
                 delivery_fee = Decimal("0.00")
+
             total = subtotal + delivery_fee
             reference = uuid.uuid4().hex.upper()
+
             order = Order.objects.create(
                 reference=reference,
                 full_name=data.get("full_name") or "",
@@ -329,6 +334,7 @@ def checkout(request):
                 delivery_fee=delivery_fee,
                 total=total,
             )
+
             for item in items:
                 product = item["product"]
                 qty = item["qty"]
@@ -341,10 +347,63 @@ def checkout(request):
                     unit_price=unit_price,
                     line_total=line_total,
                 )
+
             save_cart(request, get_cart(request))
-            return redirect("payment_status", reference=order.reference)
+
+            # -----------------------------
+            # BYPASS PAYNOW FOR NOW:
+            # Send order to WhatsApp sales team
+            # -----------------------------
+            if whatsapp.is_configured():
+                lines = [
+                    "NEW ORDER (Payment Later) 🟡",
+                    f"Ref: {order.reference}",
+                    f"Name: {order.full_name or '-'}",
+                    f"Phone: {order.phone or '-'}",
+                    f"Email: {order.email or '(not provided)'}",
+                    f"Theme: {order.theme or '-'}",
+                    f"Child: {order.child_name or '-'}",
+                    f"Age: {order.age or '-'}",
+                    f"Collection date: {order.collection_date or '-'}",
+                    f"Toy preference: {order.toy_preference or '-'}",
+                    f"Delivery: {order.delivery_method or '-'}",
+                    f"Address: {order.delivery_address or '-'}",
+                    "",
+                    "Items:",
+                ]
+
+                for oi in order.items.all():
+                    lines.append(f"- {oi.product.name} x{oi.qty} = $ {oi.line_total}")
+
+                lines.extend([
+                    "",
+                    f"Subtotal: $ {order.subtotal}",
+                    f"Delivery: $ {order.delivery_fee}",
+                    f"Total: $ {order.total}",
+                    "",
+                    "Customer message: Please confirm order on WhatsApp. Payment will be arranged after confirmation.",
+                ])
+
+                msg = "\n".join(lines)
+
+                try:
+                    whatsapp.send_text(settings.WA_ADMIN_TO, msg)
+                except Exception:
+                    pass
+
+            # previously we used messages to inform the user, but that caused
+            # the same notices to appear on cart/other pages later.  Instead we
+            # render the information directly on the order_received template.
+
+            # Clear cart so they don't accidentally resubmit
+            clear_cart(request)
+
+            # Redirect to new order-received page instead of payment flow
+            return redirect("order_received", reference=order.reference)
+
     else:
         form = CheckoutForm()
+
     context = {
         "form": form,
         "items": items,
@@ -355,6 +414,12 @@ def checkout(request):
         "paynow_configured": paynow.is_configured(),
     }
     return render(request, "checkout.html", context)
+
+
+
+def order_received(request, reference):
+    order = get_object_or_404(Order, reference=reference)
+    return render(request, "order_received.html", {"order": order})
 
 
 def payment_return(request):
