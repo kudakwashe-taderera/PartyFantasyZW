@@ -21,19 +21,34 @@ def save_cart(request, cart):
 def add_to_cart_session(request, product_id, qty):
     cart = get_cart(request)
     key = str(product_id)
-    current_qty = cart.get(key, 0)
-    cart[key] = current_qty + qty
+
+    current_qty = int(cart.get(key, 0) or 0)
+    new_qty = current_qty + int(qty)
+
+    if new_qty < 10:
+        new_qty = 10
+
+    cart[key] = new_qty
     save_cart(request, cart)
 
 
 def update_cart_item(request, product_id, qty):
     cart = get_cart(request)
     key = str(product_id)
+
+    try:
+        qty = int(qty)
+    except (TypeError, ValueError):
+        qty = 10
+
     if qty > 0:
+        if qty < 10:
+            qty = 10
         cart[key] = qty
     else:
         if key in cart:
             del cart[key]
+
     save_cart(request, cart)
 
 
@@ -53,7 +68,7 @@ def clear_cart(request):
 
 def get_cart_items(request):
     cart = get_cart(request)
-    product_ids = [int(pk) for pk in cart.keys()]
+    product_ids = [int(pk) for pk in cart.keys() if str(pk).isdigit()]
     products = Product.objects.filter(id__in=product_ids, is_active=True)
     items = []
     subtotal = Decimal("0.00")

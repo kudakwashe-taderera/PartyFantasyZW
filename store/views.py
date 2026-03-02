@@ -4,6 +4,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
+from django.contrib import messages 
 from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
 from .models import Category, Product, Order, OrderItem, GalleryItem, Review, ContactMessage
 from .forms import CheckoutForm, ContactForm, ReviewForm
@@ -17,7 +18,7 @@ from .utils import (
     get_site_setting,
     save_cart,
 )
-from . import paynow
+from . import paynow, whatsapp
 
 
 def _send_admin_order_paid_email(order):
@@ -48,6 +49,49 @@ def _send_admin_order_paid_email(order):
         fail_silently=True,
     )
 
+def _send_admin_order_paid_whatsapp(order):
+    if order.status != Order.STATUS_PAID:
+        return
+    if getattr(order, "whatsapp_sent", False):
+        return
+    if not whatsapp.is_configured():
+        return
+
+    lines = [
+        "NEW PAID ORDER ✅",
+        f"Ref: {order.reference}",
+        f"Name: {order.full_name or '-'}",
+        f"Phone: {order.phone or '-'}",
+        f"Email: {order.email or '(not provided)'}",
+        f"Theme: {order.theme or '-'}",
+        f"Child: {order.child_name or '-'}",
+        f"Age: {order.age or '-'}",
+        f"Collection date: {order.collection_date or '-'}",
+        f"Toy preference: {order.toy_preference or '-'}",
+        f"Delivery: {order.delivery_method or '-'}",
+        f"Address: {order.delivery_address or '-'}",
+        "",
+        "Items:",
+    ]
+
+    for oi in order.items.all():
+        lines.append(f"- {oi.product.name} x{oi.qty} = $ {oi.line_total}")
+
+    lines.extend([
+        "",
+        f"Subtotal: $ {order.subtotal}",
+        f"Delivery: $ {order.delivery_fee}",
+        f"Total: $ {order.total}",
+    ])
+
+    msg = "\n".join(lines)
+
+    try:
+        whatsapp.send_text(settings.WA_ADMIN_TO, msg)
+        order.whatsapp_sent = True
+        order.save(update_fields=["whatsapp_sent"])
+    except Exception:
+        pass
 
 def _send_customer_order_paid_email(order):
     if not order.email or not order.email.strip():
@@ -178,29 +222,32 @@ def product_list(request):
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug, is_active=True)
     if request.method == "POST":
-        qty_raw = request.POST.get("qty", "1")
+        qty_raw = request.POST.get("qty", "10")
         try:
             qty = int(qty_raw)
         except ValueError:
-            qty = 1
-        if qty < 1:
-            qty = 1
+            qty = 10
+        if qty < 10:
+            qty = 10
         add_to_cart_session(request, product.id, qty)
         return redirect("cart")
     return render(request, "product_detail.html", {"product": product})
 
-
 def add_to_cart(request, product_id):
     if request.method != "POST":
         return HttpResponseBadRequest("Invalid method")
+
     product = get_object_or_404(Product, id=product_id, is_active=True)
-    qty_raw = request.POST.get("qty", "1")
+
+    qty_raw = request.POST.get("qty", "10")
     try:
         qty = int(qty_raw)
     except ValueError:
-        qty = 1
-    if qty < 1:
-        qty = 1
+        qty = 10
+
+    if qty < 10:
+        qty = 10
+
     add_to_cart_session(request, product.id, qty)
     return redirect("cart")
 
@@ -214,19 +261,27 @@ def cart_view(request):
                 pid = int(product_id)
             except ValueError:
                 pid = None
+
             if pid:
                 if action == "update":
-                    qty_raw = request.POST.get("qty", "1")
+                    qty_raw = request.POST.get("qty", "10")
                     try:
                         qty = int(qty_raw)
                     except ValueError:
-                        qty = 1
-                    if qty < 0:
-                        qty = 0
-                    update_cart_item(request, pid, qty)
+                        qty = 10
+
+                    if qty == 0:
+                        update_cart_item(request, pid, 0)
+                    elif 1 <= qty < 10:
+                        messages.warning(request, "Minimum order quantity is 10 per item.")
+                    else:
+                        update_cart_item(request, pid, qty)
+
                 elif action == "remove":
                     remove_cart_item(request, pid)
+
         return redirect("cart")
+
     items, subtotal = get_cart_items(request)
     setting = get_site_setting()
     delivery_fee = setting.delivery_fee
@@ -238,7 +293,6 @@ def cart_view(request):
         "delivery_total": delivery_total,
     }
     return render(request, "cart.html", context)
-
 
 def checkout(request):
     items, subtotal = get_cart_items(request)
@@ -326,6 +380,7 @@ def payment_status(request, reference):
         if not was_paid and order.status == Order.STATUS_PAID:
             _send_admin_order_paid_email(order)
             _send_customer_order_paid_email(order)
+            _send_admin_order_paid_whatsapp(order)
         if not was_failed and order.status == Order.STATUS_FAILED:
             _send_customer_payment_failed_email(order)
         return redirect("payment_status", reference=order.reference)
@@ -334,6 +389,7 @@ def payment_status(request, reference):
     if not was_paid and order.status == Order.STATUS_PAID:
         _send_admin_order_paid_email(order)
         _send_customer_order_paid_email(order)
+        _send_admin_order_paid_whatsapp(order)
     if not was_failed and order.status == Order.STATUS_FAILED:
         _send_customer_payment_failed_email(order)
     context = {
@@ -409,6 +465,7 @@ def paynow_result(request):
     if not was_paid and order.status == Order.STATUS_PAID:
         _send_admin_order_paid_email(order)
         _send_customer_order_paid_email(order)
+        _send_admin_order_paid_whatsapp(order)
     if not was_failed and order.status == Order.STATUS_FAILED:
         _send_customer_payment_failed_email(order)
     return HttpResponse("OK", status=200)
@@ -439,6 +496,7 @@ def paynow_status_json(request, order_reference):
     if not was_paid and order.status == Order.STATUS_PAID:
         _send_admin_order_paid_email(order)
         _send_customer_order_paid_email(order)
+        _send_admin_order_paid_whatsapp(order)
     if not was_failed and order.status == Order.STATUS_FAILED:
         _send_customer_payment_failed_email(order)
     paid = order.status == Order.STATUS_PAID
@@ -446,3 +504,45 @@ def paynow_status_json(request, order_reference):
     message = "Paid" if paid else ("Failed or cancelled" if order.status == Order.STATUS_FAILED else "Pending")
     return JsonResponse({"status": status, "paid": paid, "message": message})
 
+def robots_txt(request):
+    lines = [
+        "User-agent: *",
+        "Allow: /",
+        f"Sitemap: {request.build_absolute_uri(reverse('sitemap_xml'))}",
+    ]
+    return HttpResponse("\n".join(lines) + "\n", content_type="text/plain")
+
+
+def sitemap_xml(request):
+    base = request.build_absolute_uri("/")[:-1]
+
+    urls = [
+        {"loc": f"{base}{reverse('home')}", "changefreq": "weekly", "priority": "1.0"},
+        {"loc": f"{base}{reverse('product_list')}", "changefreq": "weekly", "priority": "0.9"},
+        {"loc": f"{base}{reverse('gallery')}", "changefreq": "monthly", "priority": "0.6"},
+        {"loc": f"{base}{reverse('reviews')}", "changefreq": "monthly", "priority": "0.6"},
+        {"loc": f"{base}{reverse('about')}", "changefreq": "yearly", "priority": "0.5"},
+        {"loc": f"{base}{reverse('contact')}", "changefreq": "yearly", "priority": "0.5"},
+    ]
+
+    for p in Product.objects.filter(is_active=True).only("slug").order_by("-created_at"):
+        urls.append(
+            {
+                "loc": f"{base}{reverse('product_detail', kwargs={'slug': p.slug})}",
+                "changefreq": "weekly",
+                "priority": "0.8",
+            }
+        )
+
+    xml = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+    for u in urls:
+        xml.append("  <url>")
+        xml.append(f"    <loc>{u['loc']}</loc>")
+        xml.append(f"    <changefreq>{u['changefreq']}</changefreq>")
+        xml.append(f"    <priority>{u['priority']}</priority>")
+        xml.append("  </url>")
+    xml.append("</urlset>")
+    return HttpResponse("\n".join(xml) + "\n", content_type="application/xml")

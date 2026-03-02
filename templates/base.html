@@ -5,9 +5,31 @@
     <meta charset="utf-8">
     <title>{% block title %}Party Fantasy ZW{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="{% block meta_description %}Premium party boxes & decor in Zimbabwe. Custom themes, fast delivery, and EcoCash payments.{% endblock %}">
+    <meta name="robots" content="{% block meta_robots %}index,follow{% endblock %}">
+
+    <link rel="canonical" href="{% block canonical %}{{ request.scheme }}://{{ request.get_host }}{{ request.path }}{% endblock %}">
+
+    <meta property="og:site_name" content="Party Fantasy ZW">
+    <meta property="og:title" content="{% block og_title %}Party Fantasy ZW{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Premium party boxes & decor in Zimbabwe. Custom themes, fast delivery, and EcoCash payments.{% endblock %}">
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:image" content="{% block og_image %}{% static 'img/og-default.jpg' %}{% endblock %}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}Party Fantasy ZW{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Premium party boxes & decor in Zimbabwe. Custom themes, fast delivery, and EcoCash payments.{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{% static 'img/og-default.jpg' %}{% endblock %}">
+
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="apple-touch-icon" href="{% static 'img/apple-touch-icon.png' %}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Droid+Serif:wght@400;700&family=Inter:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -18,6 +40,7 @@
             }
         }
     </script>
+    {% block structured_data %}{% endblock %}
 </head>
 <body class="font-sans antialiased text-neutral-800 bg-neutral-50 min-h-screen flex flex-col">
     <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-sm border-b border-rose-100/80 shadow-[0_1px_0_0_rgba(0,0,0,0.04)]">

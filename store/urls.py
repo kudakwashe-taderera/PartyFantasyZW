@@ -18,5 +18,7 @@ urlpatterns = [
     path("paynow/result/", views.paynow_result, name="paynow_result"),
     path("payments/paynow/ecocash/start/", views.ecocash_start, name="ecocash_start"),
     path("payments/paynow/status/<str:order_reference>/", views.paynow_status_json, name="paynow_status_json"),
+    path("robots.txt", views.robots_txt, name="robots_txt"),
+    path("sitemap.xml", views.sitemap_xml, name="sitemap_xml"),
 ]
 

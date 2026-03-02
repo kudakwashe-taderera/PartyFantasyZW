@@ -1,16 +1,33 @@
 {% extends "base.html" %}
 {% load static %}
 {% load text_extras %}
+
 {% block title %}Party Fantasy ZW · Magical Parties In Zimbabwe{% endblock %}
+
+{% block meta_description %}
+Luxury custom party stationery, favours and party boxes in Zimbabwe. Curated themes, EcoCash payments, delivery or collection available.
+{% endblock %}
+
+{% block og_title %}Party Fantasy ZW · Magical Parties In Zimbabwe{% endblock %}
+
+{% block og_description %}
+Luxury custom party stationery, favours and party boxes in Zimbabwe. Curated themes, EcoCash payments, delivery or collection available.
+{% endblock %}
+
+{% block og_type %}website{% endblock %}
+
+{% block og_image %}{% static 'img/og-default.jpg' %}{% endblock %}
+{% block twitter_image %}{% static 'img/og-default.jpg' %}{% endblock %}
+
 {% block content %}
 <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
     <img src="{% static 'video/hero.PNG' %}" alt="" class="absolute inset-0 w-full h-full object-cover">
     <div class="absolute inset-0 bg-neutral-900/50"></div>
     <div class="relative z-10 max-w-4xl mx-auto px-4 py-20 text-center">
-        <h1 class="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-snug mb-5">Magical party boxes for every celebration</h1>
+        <h1 class="text-3xl sm:text-4xl font-bold text-white tracking-tight leading-snug mb-5">Luxury Custom Party Stationery / Favours Designed to Make Your Day Unforgettable</h1>
         <p class="text-base text-neutral-200 max-w-xl mx-auto mb-3 leading-relaxed">Curated themes, premium decor, and joyful details. All priced in USD and crafted for families in Zimbabwe.</p>
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="{% url 'product_list' %}" class="inline-flex items-center justify-center px-6 py-3 rounded-2xl font-medium text-white bg-rose-500 hover:bg-rose-600 border border-rose-500 shadow-[0_1px_2px_rgba(0,0,0,0.05)] transition-colors">Browse party boxes</a>
+            <a href="{% url 'product_list' %}" class="inline-flex items-center justify-center px-6 py-3 rounded-2xl font-medium text-white bg-rose-500 hover:bg-rose-600 border border-rose-500 shadow-[0_1px_2px_rgba(0,0,0,0.05)] transition-colors">Browse our products</a>
             <a href="{% url 'about' %}" class="inline-flex items-center justify-center px-6 py-3 rounded-2xl font-medium text-white border border-white/80 hover:bg-white/10 transition-colors">About us</a>
         </div>
     </div>

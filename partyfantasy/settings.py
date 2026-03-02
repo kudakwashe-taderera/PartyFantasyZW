@@ -125,6 +125,10 @@ else:
 DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "Party Fantasy ZW <noreply@partyfantasyzw.local>")
 ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "tadererak@gmail.com")
 
+WA_PHONE_NUMBER_ID = os.getenv("WA_PHONE_NUMBER_ID", "")
+WA_ACCESS_TOKEN = os.getenv("WA_ACCESS_TOKEN", "")
+WA_ADMIN_TO = os.getenv("WA_ADMIN_TO", "")
+
 PAYNOW_INTEGRATION_ID = os.environ.get("PAYNOW_INTEGRATION_ID", "")
 PAYNOW_INTEGRATION_KEY = os.environ.get("PAYNOW_INTEGRATION_KEY", "")
 PAYNOW_RETURN_URL = os.environ.get("PAYNOW_RETURN_URL", "")

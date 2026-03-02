@@ -16,7 +16,7 @@ DELIVERY_METHOD_CHOICES = [
 
 class CheckoutForm(forms.Form):
     input_class = "w-full px-4 py-2.5 rounded-2xl border border-neutral-200 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:border-neutral-300"
-    theme = forms.CharField(max_length=255, required=False, widget=forms.TextInput(attrs={"class": input_class}))
+    theme = forms.CharField(max_length=255, required=False, widget=forms.TextInput(attrs={"class": input_class, "placeholder": "e.g. Huntrix / Spiderman / Paw Patrol / Butterfly"}))
     child_name = forms.CharField(max_length=255, required=False, widget=forms.TextInput(attrs={"class": input_class}))
     age = forms.IntegerField(required=False, min_value=1, max_value=18, widget=forms.NumberInput(attrs={"class": input_class}))
     collection_date = forms.DateField(required=False, widget=forms.DateInput(attrs={"type": "date", "class": input_class}))

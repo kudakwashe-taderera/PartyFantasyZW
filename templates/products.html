@@ -1,6 +1,57 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Party Boxes · Party Fantasy ZW{% endblock %}
+
+{% block title %}
+{% if current_category %}{{ current_category|title }} · Party Boxes · Party Fantasy ZW{% else %}Party Boxes · Party Fantasy ZW{% endif %}
+{% endblock %}
+
+{% block meta_description %}
+{% if current_query %}
+Search results for "{{ current_query }}" — Party Fantasy ZW party boxes in Zimbabwe. Custom themes, delivery, and EcoCash payments.
+{% elif current_category %}
+Browse {{ current_category|title }} party boxes in Zimbabwe. Custom themes, delivery, and EcoCash payments.
+{% else %}
+Browse Party Fantasy ZW party boxes in Zimbabwe. Custom themes, delivery, and EcoCash payments.
+{% endif %}
+{% endblock %}
+
+{% block og_title %}
+{% if current_query %}
+Search: {{ current_query }} · Party Fantasy ZW
+{% elif current_category %}
+{{ current_category|title }} · Party Fantasy ZW
+{% else %}
+Party Boxes · Party Fantasy ZW
+{% endif %}
+{% endblock %}
+
+{% block og_description %}
+{% if current_query %}
+Search results for "{{ current_query }}" — Party Fantasy ZW party boxes in Zimbabwe. Custom themes, delivery, and EcoCash payments.
+{% elif current_category %}
+Browse {{ current_category|title }} party boxes in Zimbabwe. Custom themes, delivery, and EcoCash payments.
+{% else %}
+Browse Party Fantasy ZW party boxes in Zimbabwe. Custom themes, delivery, and EcoCash payments.
+{% endif %}
+{% endblock %}
+
+{% block og_image %}{% static 'img/og-default.jpg' %}{% endblock %}
+{% block twitter_image %}{% static 'img/og-default.jpg' %}{% endblock %}
+
+{% block meta_robots %}
+{% if current_query %}noindex,follow{% else %}index,follow{% endif %}
+{% endblock %}
+
+{% block canonical %}
+{% if current_query %}
+{{ request.scheme }}://{{ request.get_host }}{% url 'product_list' %}
+{% elif current_category %}
+{{ request.scheme }}://{{ request.get_host }}{% url 'product_list' %}?category={{ current_category|urlencode }}
+{% else %}
+{{ request.scheme }}://{{ request.get_host }}{% url 'product_list' %}
+{% endif %}
+{% endblock %}
+
 {% block content %}
 <section class="py-10 sm:py-14">
     <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
@@ -16,7 +67,7 @@
     </div>
 
     <nav class="flex flex-wrap gap-2 mb-8" aria-label="Categories">
-        <a href="{% url 'product_list' %}?q={{ current_query|urlencode }}" class="px-4 py-2 rounded-xl text-sm font-medium transition-colors {% if not current_category %}bg-rose-500 text-white{% else %}bg-white border border-neutral-200 text-neutral-600 hover:bg-neutral-50 hover:border-neutral-300{% endif %}">All</a>
+        <a href="{% url 'product_list' %}{% if current_query %}?q={{ current_query|urlencode }}{% endif %}" class="px-4 py-2 rounded-xl text-sm font-medium transition-colors {% if not current_category %}bg-rose-500 text-white{% else %}bg-white border border-neutral-200 text-neutral-600 hover:bg-neutral-50 hover:border-neutral-300{% endif %}">All</a>
         {% for cat in categories %}
         <a href="{% url 'product_list' %}?q={{ current_query|urlencode }}&category={{ cat.slug }}" class="px-4 py-2 rounded-xl text-sm font-medium transition-colors {% if cat.slug == current_category %}bg-rose-500 text-white{% else %}bg-white border border-neutral-200 text-neutral-600 hover:bg-neutral-50 hover:border-neutral-300{% endif %}">{{ cat.name }}</a>
         {% endfor %}
@@ -40,10 +91,13 @@
             </a>
             <div class="p-5 flex flex-col flex-1 min-h-0">
                 <a href="{% url 'product_detail' product.slug %}" class="font-semibold text-neutral-900 mb-1 block hover:text-rose-600 transition-colors line-clamp-2">{{ product.name }}</a>
+
                 <p class="text-lg font-bold text-neutral-900 mt-auto pt-3">${{ product.price }}</p>
+                <p class="text-xs text-neutral-600 mt-1">Price per item · Min order: <strong>10</strong></p>
+
                 <form method="post" action="{% url 'add_to_cart' product.id %}" class="mt-3 flex items-center gap-2">
                     {% csrf_token %}
-                    <input type="number" name="qty" value="1" min="1" max="99" class="w-14 px-2 py-2 rounded-xl border border-neutral-200 text-neutral-900 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500/30 focus:border-rose-500" aria-label="Quantity">
+                    <input type="hidden" name="qty" value="10">
                     <button type="submit" class="flex-1 inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-medium text-white bg-rose-500 hover:bg-rose-600 transition-colors">Add to cart</button>
                 </form>
             </div>

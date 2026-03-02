@@ -70,6 +70,7 @@ class Order(models.Model):
     paynow_reference = models.CharField(max_length=64, blank=True)
     paynow_poll_url = models.URLField(blank=True)
     paynow_redirect_url = models.URLField(blank=True)
+    whatsapp_sent = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["-created_at"]
